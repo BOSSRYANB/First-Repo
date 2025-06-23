@@ -1,0 +1,288 @@
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: poppins, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.topnav{
+    display: flex;
+    position: absolute;
+    top: 0;
+    background-color: #034aa6;
+    opacity: 0.8;
+    justify-content: space-between;
+    z-index: 100;
+    width: 100%;
+    opacity: 0;
+}
+
+.topnav:hover{
+    opacity: 1;
+    animation: fadeIn .5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+.topnav-right{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    height: 40px;
+}
+
+.add-beneficiary{
+    position: relative;
+    display: flex;
+    background-color: #154024;
+    right: 12px;
+    top: 1.5em;
+    padding: 12px 30px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-beneficiary:hover{
+    background-color: #1a5b2c;
+}
+
+.top{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.template{
+    width: 1123px;    
+    height: 794px;  
+    padding: 20px;
+    box-sizing: border-box;
+    background: white;
+    max-height: 1100px;
+    overflow: hidden;  
+    transform: scale(0.95);
+}
+
+.heading{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.head-text{
+    margin: 3px 0;
+    font-size: 16px;
+}
+
+.heading h4:first-of-type{
+    font-weight: normal;
+}
+
+.secondheading{
+    font-size: 12px;
+}
+
+.logo1{
+    width: 80px;
+    height: 80px;
+    padding-top: 5px;
+}
+
+.logo2{
+    width: 100px;
+    height: 100px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    background-color: #034aa6;
+    color: #ffffff;
+    font-size: 10px;
+}
+
+tr{
+    padding: 10px;
+    height: 2rem;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 5px;
+    white-space: normal; 
+    word-wrap: break-word; 
+    max-width: 150px; 
+}
+
+.line1{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+    padding-top: 0;
+    text-align: left;
+    font-size: 12px;
+}
+
+.line1-signature{
+    padding-right: 50em;
+    text-align: left;
+}
+
+.line2{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 12px;
+}
+
+.line2-signature{
+    padding-right: 40em;
+    text-align: left;
+    font-size: 12px;
+}
+
+.lowsignatories{
+    display: flex;
+    font-size: 12px;
+}
+
+.twosig-bottom{
+    display: flex;
+    font-size: 12px;
+}
+
+.par-bottom{
+    font-size: 12px;
+}
+
+.subtotal{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.lowsignatories{
+    display: flex;
+    justify-content: space-between;
+}
+
+.twosig-bottom{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3em;
+}
+
+.signature1, .signature2{
+    padding: 0 20px;
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.buttons button{
+    padding: 10px 20px;
+    background-color: #034aa6;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.buttons button:hover{
+    background-color: #3622c8;
+}
+
+.buttons button:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#beneficiaryForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: left;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px;
+}
+
+.column1, .column2, .column3{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 35em;
+    justify-content: left;
+}
+
+.column1 input, .column2 input, .column3 input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.column3 select{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.column1 label, .column2 label, .column3 label{
+    font-weight: bold;
+}
+
+.column1 input:focus, .column2 input:focus, .column3 input:focus, .column3 select:focus{
+    font-size: 14px;
+    outline-color: #034aa6;
+}
+
+.modal{
+    z-index: 1000;
+    position: fixed;
+    background-color: whitesmoke;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+}
+
+.modal.show{
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+    pointer-events: auto;
+    top: 0;
+    position: absolute;
+    left: 0;
+}
+
+@media print {
+  .topnav {
+    display: none !important;
+  }
+}

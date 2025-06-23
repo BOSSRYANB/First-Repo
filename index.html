@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="modal-container" id="modalContainer">
+        <div class="modal" id="modal">
+            <h2>Add Beneficiary</h2>
+            <form id="beneficiaryForm">
+                <div class="column1">
+                    <label for="Province">Province:</label>
+                    <input type="text" id="Province" name="Province" required autocomplete="off">
+
+                    <label for="Municipality">Municipality:</label>
+                    <input type="text" id="Municipality" name="Municipality" required autocomplete="off">
+
+                    <label for="payrollNumber">Payroll Number:</label>
+                    <input type="text" id="payrollNum" name="payrollNumber" required autocomplete="off">
+
+                    <label for="batchCode">Batch Code:</label>
+                    <input type="text" id="batchCode" name="batchCode" required autocomplete="off">
+
+                    <label for="number">No:</label>
+                    <input type="number" id="number" name="number" required autocomplete="off">
+                </div>
+
+                <div class="column2">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required autocomplete="off">
+
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required autocomplete="off">
+
+                    <label for="middleName">Middle Name:</label>
+                    <input type="text" id="middleName" name="middleName" autocomplete="off">
+
+                    <label for="extension">Extension:</label>
+                    <input type="text" id="extension" name="extension" autocomplete="off">
+                </div>
+                <div class="column3">
+                    <label for="Bdate">Bdate</label>
+                    <input type="text" id="Bdate" name="Bdate" autocomplete="off" required placeholder="mm/dd/yyyy">
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <label for="sex">Sex:</label>
+                    <select id="sex" name="sex" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" required>
+                </div>
+            </form>
+            <div class="buttons">
+                <button type="submit" id="addBenee">Add Beneficiary</button>
+                <button type="button" id="closeButton">Close</button>
+                <button type="button" id="clearButton">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="topnav">
+        <h1>Payroll System</h1>
+        <div class="topnav-right">
+            <button class="add-beneficiary" id="SaveDoc" onclick="printSection()">Save</button>
+            <button class="add-beneficiary" id="addBeneficiary">Add Beneficiary</button>
+        </div>
+    </div>
+    <div class="inputfields">
+        <label for="Name"></label>
+    </div>
+    <div class="template" id="template">
+        <div class="top">
+            <img src="ncsclogo.png" alt="" class="logo1">
+            <div class="heading">
+                <h2 class="head-text">NATIONAL COMMISION OF SENIOR CITIZEN</h2>
+                <h4 class="head-text" id="heading1target">Region X Province of [...] City/Municipality of [...]</h4>
+                <h4 class="head-text">Expanded Centenarian Act</h4>
+                <br>
+                <h2 class="head-text">CASH GIFT PAYROLL</h2>
+            </div>
+            <img src="bagongP.png" alt="" class="logo2">
+        </div>
+        <div class="secondheading">
+            <p id="payrollNumber">Payroll Number:</p>
+            <p>A. Purpose:   Cash gift payout for Octogenarians, Nonagenarians, and Centenarians pursuant to R.A. No. 11982 - Expanded Centenarian Act.</p>
+        </div>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th rowspan="2">Batch Code</th>
+                    <th rowspan="2">No.</th>
+                    <th colspan="4">FULL NAME OF BENEFICIARY</th>
+                    <th rowspan="2">Bdate (mm/dd/yyyy)</th>
+                    <th rowspan="2">Age</th>
+                    <th rowspan="2">Sex</th>
+                    <th rowspan="2">Amount</th>
+                    <th rowspan="2">Amount Received</th>
+                    <th colspan="2">Beneficiary / Authorized Representative</th>
+                    <th rowspan="2">For Authorized Representative (Relationship to the Beneficiary/ Witness)</th>
+                    <th rowspan="2">Date of Death</th>
+                    <th rowspan="2">Date Received</th>
+                    <th rowspan="2">Remarks</th>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Extension</th>
+                    <th>Signature Over Printed Name</th>
+                    <th>Thumbmark</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td id="batchCode"></td>
+                        <td id="number"></td>
+                        <td id="lastName"></td>
+                        <td id="firstName"></td>
+                        <td id="middleName"></td>
+                        <td id="extension"></td>
+                        <td id="thumbmark"></td>
+                        <td id="bdate"></td>
+                        <td id="age"></td>
+                        <td id="sex"></td>
+                        <td id="amount"></td>
+                        <td id="amountReceived"></td>
+                        <td id="beneficiary"></td>
+                        <td id="relationship"></td>
+                        <td id="dateOfDeath"></td>
+                        <td id="dateReceived"></td>
+                        <td id="remarks"></td>
+                    </tr>
+                    <tr>
+                        <td id="batchCode"></td>
+                        <td id="number"></td>
+                        <td id="lastName"></td>
+                        <td id="firstName"></td>
+                        <td id="middleName"></td>
+                        <td id="extension"></td>
+                        <td id="thumbmark"></td>
+                        <td id="bdate"></td>
+                        <td id="age"></td>
+                        <td id="sex"></td>
+                        <td id="amount"></td>
+                        <td id="amountReceived"></td>
+                        <td id="beneficiary"></td>
+                        <td id="relationship"></td>
+                        <td id="dateOfDeath"></td>
+                        <td id="dateReceived"></td>
+                        <td id="remarks"></td>
+                    </tr>
+                    <tr>
+                        <td id="batchCode"></td>
+                        <td id="number"></td>
+                        <td id="lastName"></td>
+                        <td id="firstName"></td>
+                        <td id="middleName"></td>
+                        <td id="extension"></td>
+                        <td id="thumbmark"></td>
+                        <td id="bdate"></td>
+                        <td id="age"></td>
+                        <td id="sex"></td>
+                        <td id="amount"></td>
+                        <td id="amountReceived"></td>
+                        <td id="beneficiary"></td>
+                        <td id="relationship"></td>
+                        <td id="dateOfDeath"></td>
+                        <td id="dateReceived"></td>
+                        <td id="remarks"></td>
+                    </tr>
+                    <tr>
+                        <td id="batchCode"></td>
+                        <td id="number"></td>
+                        <td id="lastName"></td>
+                        <td id="firstName"></td>
+                        <td id="middleName"></td>
+                        <td id="extension"></td>
+                        <td id="thumbmark"></td>
+                        <td id="bdate"></td>
+                        <td id="age"></td>
+                        <td id="sex"></td>
+                        <td id="amount"></td>
+                        <td id="amountReceived"></td>
+                        <td id="beneficiary"></td>
+                        <td id="relationship"></td>
+                        <td id="dateOfDeath"></td>
+                        <td id="dateReceived"></td>
+                        <td id="remarks"></td>
+                    </tr>
+                    <tr>
+                        <td id="batchCode"></td>
+                        <td id="number"></td>
+                        <td id="lastName"></td>
+                        <td id="firstName"></td>
+                        <td id="middleName"></td>
+                        <td id="extension"></td>
+                        <td id="thumbmark"></td>
+                        <td id="bdate"></td>
+                        <td id="age"></td>
+                        <td id="sex"></td>
+                        <td id="amount"></td>
+                        <td id="amountReceived"></td>
+                        <td id="beneficiary"></td>
+                        <td id="relationship"></td>
+                        <td id="dateOfDeath"></td>
+                        <td id="dateReceived"></td>
+                        <td id="remarks"></td>
+                    </tr>
+                </tbody>
+            </thead>
+        </table>
+        <p class="subtotal">Subtotal: <span id="subtotal"></span></p><br>
+        <span id="GrandTotal"></span>
+        <div class="line1">
+             <p>I hereby certify that each person whose name appears<br>
+                    on the payroll are entitled to cash gift.</p>
+             <p class="line1-signature">Approved for Payment:</p>
+        </div>
+        <br>
+        <div class="line2">
+             <p>Printed Name and Signature of Acting/In-Charge-of-Office</p>
+             <p class="line2-signature">Printed Name and Signature of Head of Office</p>
+        </div>
+        <p class="par-bottom">I/we certify on my/our official oath that on ______________,I/wehave  paid in cash to each individual on the roll, the amount set opposite to each name, having presented himself/herself, </p>
+        <p class="par-bottom">established identity and affixed his/her signature or thumbmark on the space provided.</p>
+        <br>
+        <div class="lowsignatories">
+            <p class="signature-bottom">Printed Name and Signature of SDO</p>
+            <div class="twosig-bottom">
+                <div class="signature1">
+                    <p>Printed Name and Signature of</p>
+                    <p>other officer present during Payout</p>
+                </div>
+                <div class="signature2">
+                    <p>Printed Name and Signature of</p>
+                    <p>other officer present during Payout</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="html2pdfbundle.js"></script>
+</body>
+</html>
